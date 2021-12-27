@@ -1,12 +1,17 @@
 import { Router } from 'express';
 
-import * as ApiController from '../controllers/apiController';
+import * as PostController from '../controllers/postController';
+import * as UserController from '../controllers/userController';
 
 const router = Router();
 
-router.post('/register', ApiController.register);
-router.post('/login', ApiController.login);
+router.get('/posts', PostController.all);
+router.get('/post/:id', PostController.one);
+router.post('/post', PostController.create);
+router.put('/post/:id', PostController.togglePost);
+router.delete('/post/:id', PostController.deletePost);
 
-router.get('/list', ApiController.list);
+router.get('/users', UserController.all);
+router.post('/user', UserController.create);
 
 export default router;
